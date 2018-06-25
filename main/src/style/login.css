@@ -1,0 +1,13 @@
+#login {
+    background: #ffffff;
+}
+
+#login > h1{
+    text-align: center;
+}
+
+#login > .user-list {
+    width:80%;
+    float: none;
+    margin: auto;
+}

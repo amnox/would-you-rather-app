@@ -1,3 +1,5 @@
+export const USER_NOT_SET = 'USER_NOT_SET'
+
 let users = {
   sarahedo: {
     id: 'sarahedo',
@@ -33,6 +35,8 @@ let users = {
     questions: ['6ni6ok3ym7mf1p33lnez', 'xj352vofupe1dqz9emx13r'],
   }
 }
+
+let authedUser = USER_NOT_SET;
 
 let questions = {
   "8xf0y6ziyjabvozdd253nd": {
@@ -196,6 +200,40 @@ export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
         }
       }
 
+      res()
+    }, 500)
+  })
+}
+
+export function _getAuthedUser () {
+  return new Promise((res, rej) => {
+    setTimeout(() => {
+      if (localStorage.getItem("authedUser")===null) {
+        localStorage.setItem("authedUser", USER_NOT_SET);
+      }
+      else {
+        authedUser = localStorage.getItem("authedUser")
+      }
+      res(authedUser)
+    }, 1000)
+  })
+}
+
+export function _saveAuthedUser (user) {
+  return new Promise((res, rej) => {
+    setTimeout(() => {
+      authedUser = user
+      localStorage.setItem("authedUser", user);
+      res(authedUser)
+    }, 1000)
+  })
+}
+
+export function _removeAuthedUser () {
+  return new Promise((res, rej) => {
+    setTimeout(() => {
+      authedUser = USER_NOT_SET
+      localStorage.setItem("authedUser", USER_NOT_SET);
       res()
     }, 500)
   })
