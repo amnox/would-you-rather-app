@@ -26,7 +26,7 @@ class Logout extends Component {
     render () {
         return (
             <div id = "logout">
-                
+                <Nav/>
                 <h1>
                     Please click to logout
                 </h1>

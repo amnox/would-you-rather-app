@@ -2,4 +2,16 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  margin: 2%;
+}
+
+.nav {
+  float:left;
+  width: 100%;
+  
+}
+
+.nav > div {
+  float: left;
+  margin-right: 2%;
 }

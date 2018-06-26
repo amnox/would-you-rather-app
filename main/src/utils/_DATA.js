@@ -135,23 +135,18 @@ export function _getQuestions () {
   })
 }
 
-function formatQuestion ({ optionOneText, optionTwoText, author }) {
+function formatQuestion ({ id,optionOne, optionTwo, author, timestamp }) {
   return {
-    id: generateUID(),
-    timestamp: Date.now(),
+    id: id,
+    timestamp: timestamp,
     author,
-    optionOne: {
-      votes: [],
-      text: optionOneText,
-    },
-    optionTwo: {
-      votes: [],
-      text: optionTwoText,
-    }
+    optionOne,
+    optionTwo
   }
 }
 
 export function _saveQuestion (question) {
+  console.log(question)
   return new Promise((res, rej) => {
     const authedUser = question.author;
     const formattedQuestion = formatQuestion(question);
@@ -175,7 +170,8 @@ export function _saveQuestion (question) {
   })
 }
 
-export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
+export function _saveQuestionAnswer ({ authedUser, id, answer }) {
+  console.log(authedUser, id, answer)
   return new Promise((res, rej) => {
     setTimeout(() => {
       users = {
@@ -184,18 +180,18 @@ export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
           ...users[authedUser],
           answers: {
             ...users[authedUser].answers,
-            [qid]: answer
+            [id]: answer
           }
         }
       }
 
       questions = {
         ...questions,
-        [qid]: {
-          ...questions[qid],
+        [id]: {
+          ...questions[id],
           [answer]: {
-            ...questions[qid][answer],
-            votes: questions[qid][answer].votes.concat([authedUser])
+            ...questions[id][answer],
+            votes: questions[id][answer].votes.concat([authedUser])
           }
         }
       }

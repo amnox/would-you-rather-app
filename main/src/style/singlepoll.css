@@ -1,0 +1,41 @@
+#single > h1{
+    width: 100%;
+    text-align: center;
+}
+
+#single > .user-selection{
+    width: 100%;
+    float: left;
+}
+
+#single > .poll{
+    width: 100%;
+    float: left;
+}
+
+#single > .poll > .option-one, #single > .poll >.option-two {
+    border: 2px solid;
+    width: 46%;
+    float: left;
+    margin-right: 17px;
+}
+
+#single > .poll > .active:hover {
+    background: rgb(93, 201, 93);
+    cursor: pointer;
+}
+
+#single > .poll > .disabled {
+    cursor: not-allowed;
+}
+
+#single > .poll > .selected {
+    background: rgb(5, 100, 5)
+}
+
+#single > .poll > .option-one > .option-one-text, #single > .poll >.option-two > .option-two-text {
+    margin: 5%;
+    text-transform: capitalize;
+    text-align: center;
+    font-size: 30px;
+}

@@ -21,8 +21,8 @@ class Login extends Component {
     }
 
     setAuthedUser(id){
-        this.props.dispatch(handleSetAuthedUser(id));
-        this.props.history.push('/')
+        this.props.dispatch(handleSetAuthedUser(id)).then(this.props.history.push('/'))
+        
     }
 
     render () {
@@ -30,7 +30,11 @@ class Login extends Component {
         return (
             
             <div id = "login">
-
+                {
+                    this.props.authedUser!==USER_NOT_SET
+                        ?<Redirect to='/'/>
+                        :null
+                }
                 <h1>
                     Please Login to Continue
                 </h1>
