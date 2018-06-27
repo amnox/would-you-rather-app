@@ -23,7 +23,7 @@ class Home extends Component {
     }
 
     openPoll(pollId){
-        this.props.history.push('/poll/'+pollId)
+        this.props.history.push('/questions/'+pollId)
     }
 
     changeQuestions(){
@@ -46,7 +46,7 @@ class Home extends Component {
 
             <div id="home">
                 <Nav/>
-                <h1>Home</h1>
+                <h1>Welcome {this.props.userName}</h1>
                 <div className="toggle">
                     
                     <div className="switch" onClick={()=>this.changeQuestions()}>
@@ -85,6 +85,7 @@ function mapStateToProps({authedUser,users,polls}) {
     })
     return {
         authedUser,
+        userName:users[authedUser].name,
         unanswered: userUnanswered,
         answered: userAnswered
     }

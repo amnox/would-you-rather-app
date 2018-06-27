@@ -25,7 +25,7 @@ class SinglePoll extends Component {
         let { id, author, optionOne, optionTwo, timestamp } = pollOnPage
         const hasAnswered = currentUserAnswers[id]===undefined ? false : true;
         if(hasAnswered){
-            alert('Tou cant change your answer')
+            alert('You cant change your answer')
             return
         }
         this.props.dispatch(handleSavePollAnswer({

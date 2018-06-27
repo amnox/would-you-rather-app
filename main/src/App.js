@@ -16,13 +16,22 @@ import Leaderboard from './pages/Leaderboard'
 import SinglePoll from './pages/SinglePoll'
 import AddPoll from './pages/AddPoll'
 import LoadingBar from 'react-redux-loading';
+import { handleRemoveAuthedUser } from './actions/authedUser';
 
 class App extends React.Component {
 
     constructor(props){
         super(props);
+        this.reloadListener();
         //console.log(props);
     }
+    reloadListener() {
+        if (window.performance) {
+          if (performance.navigation.type == 1) {
+            this.props.dispatch(handleRemoveAuthedUser());
+          }
+        }
+      }
 
     componentDidMount () {
         this.props.dispatch(handleInitialData());
@@ -42,7 +51,7 @@ class App extends React.Component {
                             <PrivateRoute path="/" exact login = {this.props.login} component={Home} />
                             <PrivateRoute path="/leaderboard" exact login = {this.props.login} component={Leaderboard} />
                             <PrivateRoute path="/new_poll" exact login = {this.props.login} component={AddPoll} />
-                            <PrivateRoute path="/poll/:id" exact login = {this.props.login} component={SinglePoll} />
+                            <PrivateRoute path="/questions/:id" exact login = {this.props.login} component={SinglePoll} />
                         </div>
                 }
                 </div>
